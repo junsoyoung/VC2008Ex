@@ -1,0 +1,238 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+    "LANGUAGE 18, 1\r\n"
+    "#pragma code_page(949)\r\n"
+    "#include ""res\\test1_a.rc2""  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.\r\n"
+    "#include ""l.KOR\\afxres.rc""      // 표준 구성 요소입니다.\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\test1_a.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "test1_a 정보"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
+    LTEXT           "test1_a, 버전 1.0",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2017",IDC_STATIC,42,26,114,8
+    DEFPUSHBUTTON   "확인",IDOK,113,41,50,14,WS_GROUP
+END
+
+IDD_TEST1_A_DIALOG DIALOGEX 0, 0, 314, 370
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "test1_a"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Msg Testing",IDOK,203,349,50,14
+    PUSHBUTTON      "Close",IDCANCEL,257,349,50,14
+    GROUPBOX        "Option",IDC_GRP,14,18,80,88
+    CONTROL         "RED",IDC_RD_RED,"Button",BS_AUTORADIOBUTTON | WS_GROUP,25,39,29,10
+    CONTROL         "YELLOW",IDC_RD_YELLOW,"Button",BS_AUTORADIOBUTTON,25,55,43,10
+    CONTROL         "BLUE",IDC_RD_BLUE,"Button",BS_AUTORADIOBUTTON,25,71,32,10
+    CONTROL         "ETC",IDC_RD_ETC,"Button",BS_AUTORADIOBUTTON | WS_GROUP,22,116,29,10
+    LTEXT           "Color Window",IDC_STT_WIN,97,31,210,16,0,WS_EX_DLGMODALFRAME
+    LTEXT           "You can see the message.",IDC_MSG,96,50,102,112,0,WS_EX_DLGMODALFRAME
+    GROUPBOX        "USB4761 Test",IDC_STATIC,7,166,300,172
+    GROUPBOX        "Input Signal Status",IDC_GRP_INSIG,7,180,294,46,0,WS_EX_DLGMODALFRAME
+    GROUPBOX        "Output Signal",IDC_GRP_OUTSIG,7,230,294,104,0,WS_EX_DLGMODALFRAME
+    CONTROL         "",IDC_CK_OUTSIG1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,144,255,10,10
+    CONTROL         "",IDC_CK_OUTSIG2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,128,255,10,10
+    CONTROL         "",IDC_CK_OUTSIG3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,110,255,10,10
+    CONTROL         "",IDC_CK_OUTSIG4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,92,255,10,10
+    CONTROL         "",IDC_CK_OUTSIG5,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,75,255,10,10
+    CONTROL         "",IDC_CK_OUTSIG6,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,60,255,10,10
+    CONTROL         "",IDC_CK_OUTSIG7,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,44,255,10,10
+    CONTROL         "",IDC_CK_OUTSIG8,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,30,255,10,10
+    PUSHBUTTON      "Check Ouput Signal",IDC_BTN_OUTSIG_CHK,224,308,69,14
+    LTEXT           "display input signal",IDC_ST_INSIG_DISP,46,194,77,8
+    LTEXT           "display output signal check",IDC_ST_OUTSIG_CHK_DISP,51,271,84,8
+    PUSHBUTTON      "Get Input Signal",IDC_BTN_INSIG,224,200,69,14
+    LTEXT           "You can see the message.",IDC_MSG2,205,51,102,112,0,WS_EX_DLGMODALFRAME
+    GROUPBOX        "2'nd USB DIO 4761",IDC_STATIC,19,287,147,40
+    CONTROL         "",IDC_CK_OUTSIG9,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,145,297,10,10
+    CONTROL         "",IDC_CK_OUTSIG10,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,129,297,10,10
+    CONTROL         "",IDC_CK_OUTSIG11,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,111,297,10,10
+    CONTROL         "",IDC_CK_OUTSIG12,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,93,297,10,10
+    CONTROL         "",IDC_CK_OUTSIG13,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,76,297,10,10
+    CONTROL         "",IDC_CK_OUTSIG14,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,61,297,10,10
+    CONTROL         "",IDC_CK_OUTSIG15,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,45,297,10,10
+    CONTROL         "",IDC_CK_OUTSIG16,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,31,297,10,10
+    LTEXT           "display output signal check",IDC_ST_OUTSIG_CHK_DISP2,49,313,84,8
+    LTEXT           "display input signal",IDC_ST_INSIG_DISP2,46,208,77,8
+    GROUPBOX        "1'st USB DIO 4761",IDC_STATIC,19,244,146,40
+    EDITTEXT        IDC_EDIT_EX,227,7,80,14,ES_AUTOHSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041203b5"
+        BEGIN
+            VALUE "CompanyName", "TODO: <회사 이름>"
+            VALUE "FileDescription", "TODO: <파일 설명>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "test1_a.exe"
+            VALUE "LegalCopyright", "TODO: (c) <회사 이름>.  All rights reserved."
+            VALUE "OriginalFilename", "test1_a.exe"
+            VALUE "ProductName", "TODO: <제품 이름>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 949
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+
+    IDD_TEST1_A_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 307
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 363
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_ABOUTBOX            "test1_a 정보(&A)..."
+END
+
+#endif    // 한국어 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE 18, 1
+#pragma code_page(949)
+#include "res\test1_a.rc2"  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.
+#include "l.KOR\afxres.rc"      // 표준 구성 요소입니다.
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test1_a", "test1_a\test1_a.vcproj", "{4BEB2F19-4637-4514-846E-4C6D9BCE7DBB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Debug|x64__ = Debug|x64__
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+		Release|x64__ = Release|x64__
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4BEB2F19-4637-4514-846E-4C6D9BCE7DBB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4BEB2F19-4637-4514-846E-4C6D9BCE7DBB}.Debug|Win32.Build.0 = Debug|Win32
+		{4BEB2F19-4637-4514-846E-4C6D9BCE7DBB}.Debug|x64.ActiveCfg = Debug|x64
+		{4BEB2F19-4637-4514-846E-4C6D9BCE7DBB}.Debug|x64.Build.0 = Debug|x64
+		{4BEB2F19-4637-4514-846E-4C6D9BCE7DBB}.Debug|x64__.ActiveCfg = Debug|Win32
+		{4BEB2F19-4637-4514-846E-4C6D9BCE7DBB}.Debug|x64__.Build.0 = Debug|Win32
+		{4BEB2F19-4637-4514-846E-4C6D9BCE7DBB}.Release|Win32.ActiveCfg = Release|Win32
+		{4BEB2F19-4637-4514-846E-4C6D9BCE7DBB}.Release|Win32.Build.0 = Release|Win32
+		{4BEB2F19-4637-4514-846E-4C6D9BCE7DBB}.Release|x64.ActiveCfg = Release|x64
+		{4BEB2F19-4637-4514-846E-4C6D9BCE7DBB}.Release|x64.Build.0 = Release|x64
+		{4BEB2F19-4637-4514-846E-4C6D9BCE7DBB}.Release|x64__.ActiveCfg = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
