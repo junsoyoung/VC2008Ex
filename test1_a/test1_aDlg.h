@@ -117,6 +117,10 @@ public:
 	void refreshWriteData(  CUSB4761Comm& usbCm, BYTE setData, int iIndex=0);
 	void refreshReadData(  CUSB4761Comm& usbCm, BYTE chkData, int iIndex=0);
 
+
+	int GetIndexRefIds( vector< CString > vecRefId );
+	int WriteLog( string strMsg );
+
 };
 
 

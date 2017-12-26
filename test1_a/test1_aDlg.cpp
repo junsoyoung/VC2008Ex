@@ -14,6 +14,7 @@
 #include <map>
 #include <sstream>
 #include <vector>
+#include <fstream>
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -240,12 +241,26 @@ void Ctest1_aDlg::OnBnClickedRdSelectColor()
 
 void Ctest1_aDlg::OnOK()
 {
+
 	//testSortDepth();
-	//testString();
-
+	// testString();
 	// testVirtualFunc();
+	//test_ex1();
 
-	test_ex1();
+
+	/*
+	vector< CString > vec1;
+	
+	vec1.push_back(_T("0") );
+	vec1.push_back(_T("0") );
+	vec1.push_back(_T("0") );
+	vec1.push_back(_T("0") );
+
+	int iInex = GetIndexRefIds( vec1 );
+	*/
+
+	WriteLog("apple");
+
 	///CDialog::OnOK();
 }
 
@@ -407,6 +422,16 @@ void Ctest1_aDlg::testString()
 		m_strMsg.Append( szMsg + _T("\n") );
 
 	}
+	// 1) string --> CString
+
+
+	// 2) CString --> string
+
+	// 3) int --> string
+
+	// 4) string --> int 
+
+
 
 	UpdateData(false);
 }
@@ -701,4 +726,76 @@ void Ctest1_aDlg::test_stopswatch()
 {
 	
 
+}
+
+int Ctest1_aDlg::GetIndexRefIds( vector< CString > vecRefId )
+{
+	vector< CString >::iterator vItr_J = find( vecRefId.begin(), vecRefId.end(), _T("-"));
+
+	if( vItr_J != vecRefId.end() )
+	{
+		int iIndex = distance( vecRefId.begin(), vItr_J);
+		return iIndex;		
+	}
+	else 
+	{
+		vItr_J = find( vecRefId.begin(), vecRefId.end(), _T("NG"));
+		if( vItr_J != vecRefId.end() )
+		{
+			int iIndex = distance( vecRefId.begin(), vItr_J);
+			return iIndex;		
+		}
+		else
+		{
+			vItr_J = find( vecRefId.begin(), vecRefId.end(), _T("OK"));
+			if( vItr_J != vecRefId.end() )
+			{
+				int iIndex = distance( vecRefId.begin(), vItr_J);
+				return iIndex;		
+			}
+			else
+			{
+				return -1;
+			}
+		}
+	}
+	return -1;
+}
+
+int Ctest1_aDlg::WriteLog( string strMsg )
+{
+
+	// make file name
+	string szFileName = "";
+	string szCurPath = "";
+	string szFullName = "";
+	wstring wszFullName = L"";
+	char cCurPath[1024];
+	char cDate[1024];
+	ofstream hFile;
+
+	// current directory + date 
+	memset( cCurPath, '0x0', 1024);
+	_getcwd( cCurPath, 2014);
+	szCurPath.assign( cCurPath, strlen(cCurPath));
+
+	// make file name by current date
+	memset( cDate, '0x0', 1024);
+	time_t now = time(NULL);
+	struct tm* timeinfo;
+	timeinfo = localtime( &now );
+	strftime( cDate, 1024, "%Y%m%d_%H", timeinfo);
+	szFileName.assign( cDate, strlen(cDate));
+
+	// open file 
+	szFullName = szCurPath + "\\" + szFileName + ".log"; 	
+	wszFullName.assign(szFullName.begin(), szFullName.end());
+	hFile.open( wszFullName.c_str(), ios::app);
+	if( hFile.is_open() )
+	{
+		hFile << strMsg << endl;
+		hFile.close();
+		return 1;
+	}
+	return 0;
 }
