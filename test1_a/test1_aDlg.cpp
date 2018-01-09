@@ -248,18 +248,25 @@ void Ctest1_aDlg::OnOK()
 	//test_ex1();
 
 
-	/*
-	vector< CString > vec1;
 	
-	vec1.push_back(_T("0") );
-	vec1.push_back(_T("0") );
-	vec1.push_back(_T("0") );
-	vec1.push_back(_T("0") );
+	vector< string > vec1;
+	vector< string > vec2;
+	
+	vec1.push_back("0") ;
+	vec1.push_back("2") ;
+	vec1.push_back("NG") ;
+	vec1.push_back("0") ;
 
-	int iInex = GetIndexRefIds( vec1 );
-	*/
+	vec2.push_back( "-");
+	vec2.push_back( "NG");
+	vec2.push_back( "OK");
 
-	WriteLog("apple");
+	int iIndex = GetIndexRefIds( vec1 );
+
+	int iIndex2 = GetIndexTargets( vec1, vec2);
+	
+
+	// WriteLog("apple");
 
 	///CDialog::OnOK();
 }
@@ -439,17 +446,29 @@ void Ctest1_aDlg::testVirtualFunc()
 {
 	CParent p;
 	CChild c;
+	CChildChild cc;
 
 	m_strMsg.Append( _T("--- Pointer version ---\n") );
 	CParent* ptr_p = &c;
 	CParent* ptr_p2 = &p;
+	CParent* ptr_p3 = &cc;
 	string szData = ptr_p->what();
 
-	m_strMsg.Append( (CString)szData.c_str() + "\n");  // print child
+	m_strMsg.Append( (CString)szData.c_str() + _T("\n"));  // print child
 
 	szData = ptr_p2->what();
 
-	m_strMsg.Append( (CString)szData.c_str()); // print parent
+	m_strMsg.Append( (CString)szData.c_str() + _T("\n")); // print parent
+
+
+	szData = ptr_p3->what2();
+
+	m_strMsg.Append( (CString)szData.c_str()); // print child child
+
+	szData = ptr_p3->what();
+
+	m_strMsg.Append( (CString)szData.c_str()); // print child child
+	
 
 	UpdateData(false);	
 
@@ -728,29 +747,29 @@ void Ctest1_aDlg::test_stopswatch()
 
 }
 
-int Ctest1_aDlg::GetIndexRefIds( vector< CString > vecRefId )
+int Ctest1_aDlg::GetIndexRefIds( vector< string > vecRefId )
 {
-	vector< CString >::iterator vItr_J = find( vecRefId.begin(), vecRefId.end(), _T("-"));
+	vector< string >::iterator vItr_J = find( vecRefId.begin(), vecRefId.end(), "-");
 
 	if( vItr_J != vecRefId.end() )
 	{
-		int iIndex = distance( vecRefId.begin(), vItr_J);
+		int iIndex = (int)distance( vecRefId.begin(), vItr_J);
 		return iIndex;		
 	}
 	else 
 	{
-		vItr_J = find( vecRefId.begin(), vecRefId.end(), _T("NG"));
+		vItr_J = find( vecRefId.begin(), vecRefId.end(), "NG");
 		if( vItr_J != vecRefId.end() )
 		{
-			int iIndex = distance( vecRefId.begin(), vItr_J);
+			int iIndex = (int)distance( vecRefId.begin(), vItr_J);
 			return iIndex;		
 		}
 		else
 		{
-			vItr_J = find( vecRefId.begin(), vecRefId.end(), _T("OK"));
+			vItr_J = find( vecRefId.begin(), vecRefId.end(), "OK");
 			if( vItr_J != vecRefId.end() )
 			{
-				int iIndex = distance( vecRefId.begin(), vItr_J);
+				int iIndex = (int)distance( vecRefId.begin(), vItr_J);
 				return iIndex;		
 			}
 			else
@@ -762,35 +781,61 @@ int Ctest1_aDlg::GetIndexRefIds( vector< CString > vecRefId )
 	return -1;
 }
 
+int Ctest1_aDlg::GetIndexTargets( vector< string > vecTarget, vector< string > vecDelim )
+{
+	
+	int iIndex = -1;
+	vector< string >::iterator vItr_T;
+	vector< string >::iterator vItr_D;
+	// vecTarget <--- searching vecDelim
+
+	vItr_D = vecDelim.begin();
+	for( ; vItr_D != vecDelim.end() ; vItr_D++)
+	{
+		vItr_T = find( vecTarget.begin(), vecTarget.end(), *vItr_D );
+		if( vItr_T != vecTarget.end())
+		{
+			iIndex = distance( vecTarget.begin(), vItr_T);
+			break;
+		}
+	}
+	if( iIndex < 0)
+	{
+		iIndex = 0;
+	}
+	return iIndex;			
+}
+
 int Ctest1_aDlg::WriteLog( string strMsg )
 {
 
 	// make file name
+	const int CHAR_SIZE = 1024;
 	string szFileName = "";
 	string szCurPath = "";
 	string szFullName = "";
 	wstring wszFullName = L"";
-	char cCurPath[1024];
-	char cDate[1024];
+	char cCurPath[CHAR_SIZE];
+	char cDate[CHAR_SIZE];
 	ofstream hFile;
 
 	// current directory + date 
-	memset( cCurPath, '0x0', 1024);
-	_getcwd( cCurPath, 2014);
+	memset( cCurPath, 0x0, CHAR_SIZE);
+	_getcwd( cCurPath, CHAR_SIZE);
 	szCurPath.assign( cCurPath, strlen(cCurPath));
 
 	// make file name by current date
-	memset( cDate, '0x0', 1024);
+	memset( cDate, 0x0, CHAR_SIZE);
 	time_t now = time(NULL);
 	struct tm* timeinfo;
 	timeinfo = localtime( &now );
-	strftime( cDate, 1024, "%Y%m%d_%H", timeinfo);
+	strftime( cDate, CHAR_SIZE, "%Y%m%d_%H", timeinfo); // %M%S ( minute, second )
 	szFileName.assign( cDate, strlen(cDate));
 
 	// open file 
 	szFullName = szCurPath + "\\" + szFileName + ".log"; 	
 	wszFullName.assign(szFullName.begin(), szFullName.end());
-	hFile.open( wszFullName.c_str(), ios::app);
+	hFile.open( wszFullName.c_str(), ios::out | ios::app);
 	if( hFile.is_open() )
 	{
 		hFile << strMsg << endl;
