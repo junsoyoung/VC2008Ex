@@ -239,39 +239,6 @@ void Ctest1_aDlg::OnBnClickedRdSelectColor()
 
 }
 
-void Ctest1_aDlg::OnOK()
-{
-
-	//testSortDepth();
-	// testString();
-	// testVirtualFunc();
-	//test_ex1();
-
-
-	
-	vector< string > vec1;
-	vector< string > vec2;
-	
-	vec1.push_back("0") ;
-	vec1.push_back("2") ;
-	vec1.push_back("NG") ;
-	vec1.push_back("0") ;
-
-	vec2.push_back( "-");
-	vec2.push_back( "NG");
-	vec2.push_back( "OK");
-
-	int iIndex = GetIndexRefIds( vec1 );
-
-	int iIndex2 = GetIndexTargets( vec1, vec2);
-	
-
-	// WriteLog("apple");
-
-	///CDialog::OnOK();
-}
-
-
 
 list<string> Ctest1_aDlg::stringToList(string str) 
 {
@@ -409,6 +376,8 @@ void Ctest1_aDlg::testString()
 	vector<string> tokens;
 	string str("CLang Python Java Caffe What.");
 	CString szMsg;
+	CStringA szMsg_A;
+
 
 	/*
 
@@ -421,6 +390,7 @@ void Ctest1_aDlg::testString()
 		iPos = str.find_first_of( " .",iPos + 1);
 	}
 	*/
+	
 	getToken( str, tokens, "\0");
 	vector<string>::iterator itr;
 	for( itr = tokens.begin(); itr!=tokens.end(); itr++ )
@@ -429,6 +399,7 @@ void Ctest1_aDlg::testString()
 		m_strMsg.Append( szMsg + _T("\n") );
 
 	}
+	
 	// 1) string --> CString
 
 
@@ -843,4 +814,47 @@ int Ctest1_aDlg::WriteLog( string strMsg )
 		return 1;
 	}
 	return 0;
+}
+
+
+void Ctest1_aDlg::OnOK()
+{
+
+	//testSortDepth();
+	// testString();
+	// testVirtualFunc();
+	//test_ex1();
+
+
+/*
+	vector< string > vec1;
+	vector< string > vec2;
+
+	vec1.push_back("0") ;
+	vec1.push_back("2") ;
+	vec1.push_back("NG") ;
+	vec1.push_back("0") ;
+
+	vec2.push_back( "-");
+	vec2.push_back( "NG");
+	vec2.push_back( "OK");
+
+	int iIndex = GetIndexRefIds( vec1 );
+
+	int iIndex2 = GetIndexTargets( vec1, vec2);
+*/
+	// ascii code --> unicode --------------> START
+	CString szMsg;
+	CStringA szMsg_A;
+	CString szResult;
+
+	szMsg_A = "I'm Ascii Code, using Multi-byte. I will be changed the UniCode.";
+	szMsg = CString(szMsg_A);
+
+	szResult.Format(_T("%s : %s"), szMsg, (CString)szMsg_A);
+	// ascii code --> unicode --------------> __END
+
+	// WriteLog("apple");
+
+	///CDialog::OnOK();
 }
