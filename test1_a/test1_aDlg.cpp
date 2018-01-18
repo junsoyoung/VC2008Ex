@@ -819,7 +819,7 @@ int Ctest1_aDlg::WriteLog( string strMsg )
 
 void Ctest1_aDlg::OnOK()
 {
-
+	USES_CONVERSION;  // W2A() & A2W()함수를 사용하기 위해 추가한다.
 	//testSortDepth();
 	// testString();
 	// testVirtualFunc();
@@ -848,10 +848,18 @@ void Ctest1_aDlg::OnOK()
 	CStringA szMsg_A;
 	CString szResult;
 
-	szMsg_A = "I'm Ascii Code, using Multi-byte. I will be changed the UniCode.";
-	szMsg = CString(szMsg_A);
+	//szMsg_A = "I'm Ascii Code, using Multi-byte. I will be changed the UniCode.";
+	//szMsg = CString(szMsg_A);
 
-	szResult.Format(_T("%s : %s"), szMsg, (CString)szMsg_A);
+	//szResult.Format(_T("%s : %s"), szMsg, (CString)szMsg_A);
+
+	szMsg = _T("  apple banana");
+	szMsg.TrimLeft();
+	szResult = "apple";
+	szMsg_A = W2A(szMsg.Mid(0,szResult.GetLength()));
+
+	szResult.Format(_T("%s : %s"), szMsg, A2W(szMsg_A));
+	
 	// ascii code --> unicode --------------> __END
 
 	// WriteLog("apple");
