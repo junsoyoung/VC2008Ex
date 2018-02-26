@@ -64,6 +64,7 @@ Ctest1_aDlg::Ctest1_aDlg(CWnd* pParent /*=NULL*/)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 	ListMsg = new CStringList();
+
 	
 }
 
@@ -160,6 +161,13 @@ BOOL Ctest1_aDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
+
+	// 20180221syjun, set center window :: START ------------------------>
+	CWnd* pWnd = GetDesktopWindow(); 
+	CenterWindow( pWnd );
+	SetActiveWindow();
+	// 20180221syjun, set center window :: __END ------------------------>
+
 	m_iSelectColor = 1;	
 
 
@@ -800,10 +808,11 @@ int Ctest1_aDlg::WriteLog( string strMsg )
 	time_t now = time(NULL);
 	struct tm* timeinfo;
 	timeinfo = localtime( &now );
-	strftime( cDate, CHAR_SIZE, "%Y%m%d_%H", timeinfo); // %M%S ( minute, second )
+	strftime( cDate, CHAR_SIZE, "%Y%m%d_%H%M%S", timeinfo); // %M%S ( minute, second )
 	szFileName.assign( cDate, strlen(cDate));
 
 	// open file 
+	// szFullName = szCurPath + "/" + szFileName + ".log"; 	// it is possible in "/"
 	szFullName = szCurPath + "\\" + szFileName + ".log"; 	
 	wszFullName.assign(szFullName.begin(), szFullName.end());
 	hFile.open( wszFullName.c_str(), ios::out | ios::app);
@@ -862,7 +871,7 @@ void Ctest1_aDlg::OnOK()
 	
 	// ascii code --> unicode --------------> __END
 
-	// WriteLog("apple");
+	WriteLog( W2A(szResult));
 
 	///CDialog::OnOK();
 }

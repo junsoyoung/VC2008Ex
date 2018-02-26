@@ -118,7 +118,9 @@ public:
 	void refreshReadData(  CUSB4761Comm& usbCm, BYTE chkData, int iIndex=0);
 
 
-	int GetIndexRefIds( vector< CString > vecRefId );
+
+	int GetIndexRefIds( vector< string > vecRefId );
+	int GetIndexTargets( vector< string > vecTarget, vector< string > vecDelim );
 	int WriteLog( string strMsg );
 
 };
@@ -134,6 +136,10 @@ public:
 	{
 		return s;
 	}
+	virtual string what2()
+	{
+		return s;
+	}
 };
 
 class CChild : public CParent
@@ -141,8 +147,30 @@ class CChild : public CParent
 	string s;
 public:
 	CChild():s("Child"), CParent() {;}
-	string what()
+	virtual string what()
 	{
 		return s;
 	}
+	/*virtual string what2()
+	{
+		return s + " soyoung";
+	}
+	*/
+};
+
+class CChildChild : public CChild
+{
+	string s;
+public:
+	CChildChild():s("Child Child"), CChild() {;}
+	string what()
+	{
+		return s + " banana";
+	}
+	string what2()
+	{
+		return s + " apple";
+	}
+
+
 };
